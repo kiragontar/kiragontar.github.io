@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rewards</title>
+<style>
+*{
+    padding: 0;
+    margin:0;
+    text-decoration: none;
+    list-style: none;
+}
+
+body {
+    font-family: Facón;
+    background: #f4f4f4;
+}
+
+nav{
+    background: #000000;
+    height: 80%;
+    width:auto;
+    margin-bottom: 20px;
+}
+
+label.logo{
+    color: white;
+    font-size: 35px;
+    line-height: 80px;
+    padding: 0 100px;
+}
+
+nav ul {
+    float: right;
+    margin-right: 20px;
+}
+
+nav ul li{
+    display: inline-block;
+    line-height: 80px;
+    margin: 0 5px;
+}
+
+nav ul li a{
+    color: white;
+    font-size: 17px;
+    border-radius: 3px;
+    padding: 7px 13px;
+    text-transform: uppercase;
+}
+
+a.active, a:hover{
+    background: #a1a1a1;
+    transition: .5s;
+}
+
+.container {
+    background-color: #ffffff;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+
+}
+.text-container{
+    background-color: rgba(207, 207, 207, 0.653);
+    margin-top: 20px;
+    max-width: 600px;
+    padding: 20px;
+    border-radius: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+
+}
+
+.wheel-container {
+    position: relative;
+    width: 300px;
+    height: 300px;
+}
+
+#wheel {
+    width: 100%;
+    height: 100%;
+    transition: transform 3s ease-in-out;
+}
+
+button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+img {
+        background-color: transparent; 
+    }
+</style>
+</head>
+<body>
+    <nav>
+        <label class="logo">GSO LAGO</label>
+        <ul>
+            <li><a href="mainpage.py">Home</a></li>
+            <li><a href="membershiptype.html">Prices</a></li>
+            <li><a href="accountpage.py">Account</a></li>
+        </ul>
+      </nav>
+
+<div class="container" onmouseover="showPrize()" onmouseout="hidePrize()">
+    <!-- Fortune Wheel Section -->
+    <div class="wheel-container">
+        <img src="pictures/wheel.png" alt="Wheel" id="wheel">
+    </div>
+    <button id="spinBtn" onclick="spinWheel()">Spin</button>
+    <div id="result" style="text-align: center;"></div>
+    <!-- End of Fortune Wheel Section -->
+</div>
+
+<script>
+let prizeShown = false; // Flag to track if prize is already shown
+
+function spinWheel() {
+    if (prizeShown) return; // If prize is already shown, exit
+
+    const wheel = document.getElementById('wheel');
+    const resultDisplay = document.getElementById('result');
+    const prizeDisplay = document.getElementById('prize');
+    const prizes = ['Bottle', 'boxing gloves', 'Swimming Goggles', 'Sports bag', 'Protein Pouder', 'T-shirt', 'Hoody', 'Calendar']; // Define prizes for each section
+
+    // Randomly generate degrees to rotate the wheel
+    const degrees = 360 * Math.random() + 720; // adding 720 to ensure multiple spins
+
+    // Rotate the wheel
+    wheel.style.transition = 'transform 3s ease-in-out';
+    wheel.style.transform = `rotate(${degrees}deg)`;
+
+    // Disable the spin button
+    document.getElementById('spinBtn').disabled = true;
+
+    // Determine the result based on the degree
+    setTimeout(() => {
+        const sectionIndex = Math.floor(((degrees % 360) + 22.5) / 45) % 8; // Calculate section index
+        const prize = prizes[sectionIndex]; // Get the prize for the selected section
+        resultDisplay.textContent = `Your won a free Ugym ${prize}!`; // Display the prize
+        prizeDisplay.style.display = 'block'; // Show the prize
+        prizeShown = true; // Update flag to indicate prize is shown
+    }, 3000); // 3 seconds transition time
+}
+
+function showPrize() {
+    document.getElementById('prize').style.display = 'block';
+}
+
+
+</script>
+<Center>
+    <Div class="text-container">Please be aware that you have to show the screenshot of your prize to recieve it on our reception</Div>
+</Center>
+<Div></Div>
+</body>
+</html>

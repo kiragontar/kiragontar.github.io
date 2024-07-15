@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Membership Type</title>
+
+<style>
+    body{ /*Styles for everything in body*/
+        font-family: Facón; 
+        background: #ffffff;
+        padding: 0; /*Resets padding*/
+        margin: 0; /*Resets margin*/
+        text-align: center; /*Centers all text*/
+    }
+    .title{ /*Styles for element with class="title"*/
+        font-size: 32px; /*makes the text 32px*/
+        text-align: center; /*makes the text centered*/
+       
+        
+    }
+
+    h1 { /*Styles for all <h1> tags*/
+        color: white; /*makes text color white*/
+       
+    }
+ 
+
+    p{ /*Styles for all <p> tags*/
+        font-size: 20px; /*Makes text 20px*/
+        
+    }
+    table{ /*Styles for all tables*/
+        border-collapse: collapse;/*Joins neighbour borders into one*/
+        width:40%; /*Makes it take up 40% of its containing blocks width*/
+        
+    }
+    th,td{ /*Styles for all <th> and <td> tags*/
+        border: 1px solid #ddd; /*Creates solid border of 1px*/
+        padding: 8px; /*Creates 8px of space between border and center*/
+        text-align: left; /*Aligns all text to the left*/
+    }
+    th{ /*Styles for all <th> tags*/
+        background-color: #f2f2f2; /*Makes background color*/
+    }
+    tr:hover { /*Styles for when <tr> tags are hovered*/
+        background-color: #d3d3d3; /* changes background color*/
+    }
+    .section-header { /*Styles for elements with class="section-header"*/
+    font-size: 24px; /*text becomes 24px*/
+    color: #333;  /*text color becomes #333*/
+    margin-top:50px; /*Adds 50px of space to the top of the element*/
+    margin-bottom:40px; /*Adds 40px of space to the bottom of the element*/
+    }
+    .centered-table{ /*Styles for elements with class="centered-table"*/
+        margin:auto; /*Centers table*/
+    }
+    .button{ /*Styles for elements with class="button"*/
+        margin-top: 20px; /*Adds 20px of space to top of button*/
+        padding:10px 20px; /*Creates 10px of space to top and bottom and 20px of space to right and left of the borders.*/
+    }
+
+    *{ /*styles for everything*/
+        padding: 0; /*resets padding*/
+        margin:0; /*resets margin*/
+        text-decoration: none; /*removes default text-decorations */
+        list-style: none; /*removes list styles in lists such as bullet points*/
+    }
+  
+    nav{/*styles for everything in the <nav> tag*/
+        background: #000000; /*Makes the background of the elements in the nav tag #000000*/
+        height: 80%; /*Makes the height of the nav 80% of its containing elements */
+        width:auto; /*tells nav to automatically adjust the width based on the contents inside*/
+    }
+  
+    label.logo{ /*Style for labels with the class "logo"*/
+        color: white; /*Makes the text of the label white*/
+        font-size: 35px; /*Makes the text of the label 35px in font size*/
+        line-height: 80px; /*sets the height of each line of text  to 80px*/
+        padding: 0 100px; /*creates padding of 0px to top and bottom and 100px to left and right*/
+        margin-right: 900px;
+    }
+  
+    nav ul { /*Refers to the <ul> tags in the <nav> tags*/
+        float: right; /*moves elements to right side of container so moves the ul to the right*/
+        margin-right: 20px; /*Adds 20px of space to the right of the ul */
+    }
+  
+    nav ul li{ /*Styles to the <li> tags inside <ul> tags that is inside the <nav> tag*/
+        display: inline-block; /*Displays container as inline-block so element items are horizontally aligned with the same properties like height, etc.*/
+        line-height: 80px; /*Sets the height of each line of text to 80px*/
+        margin: 0 5px; /*Adds 0px of space to top and bottom and 5px to the left and right of the element*/
+    }
+  
+    nav ul li a{ /*Refers to the li situation in the top one but if the li contains an <a> tag so this applies to hyperlinks in the li*/
+        color: white; /*makes the hyperlink white*/
+        font-size: 17px; /*makes the hyperlink 17px in font size*/
+        border-radius:3px; /*Makes border corners of hyperlink rounded*/
+        padding: 7px 13px; /*Creates padding of 7px to top and bottom and 13px to left and right sides of the hyperlinks*/
+        text-transform: uppercase; /*Transforms the hyperlink into uppercase*/
+    }
+  
+    a.active, a:hover{ /*Styles for hyperlink for when they are active meaning as soon as user clicks on it, and when they hover over the hyperlink*/
+        background: #a1a1a1; /*makes the background #a1a1a1*/
+        transition: .5s; /*makes the background change happen after 0.5seconds*/
+    }
+</style>
+</head>
+
+<body>
+<nav>
+    <!-------------------------- Navigation Bar ------------------------>
+    <label class="logo">GSO LAGO</label>
+    <ul>
+        <li><a href="mainpage.py">Home</a></li>
+        <li><a href="accountpage.py">Account</a></li>
+        
+    </ul>
+</nav>
+    <!--------------------------------------------------------------------->
+<button id="buttonUgym" class="button">UGym</button>
+<button id="buttonPowerzone" class="button">PowerZone</button>
+<div id="UgymPricing" style="display: block;"> <!--Display initially-->
+<h1 class="section-header">Mandatory Fees:</h1>
+<p><strong>Joining Fee:</strong> £10 (Applied to All memberships)</p>
+<h1 class="section-header">Gym Membership Options:</h1>
+
+<table class="centered-table">
+    <tr>
+        <th>Select</th>
+        <th>Membership Type</th>
+        <th>Price (£)</th>
+    </tr>
+    <tr>
+        <td><input type="radio" name="gymmembership" value="16"></td>
+        <td>Gym: Super-off peak (10 am - 12 pm & 2 pm - 4 pm)</td>
+        <td>16</td>
+    </tr>
+    <tr>
+        <td><input type="radio" name="gymmembership" value="21"></td>
+        <td>Gym: Off-peak (12 - 2 pm & 8 - 11 pm)</td>
+        <td>21</td>
+    </tr>
+    <tr>
+        <td><input type="radio" name="gymmembership" value="30"></td>
+        <td>Gym: Anytime </td>
+        <td>30</td>
+    </tr>
+</table>
+
+
+<h1 class="section-header">Non-Gym Membership Options</h1>
+<table class="centered-table">
+    <tr>
+        <th>Select</th>
+        <th>Membership Type</th>
+        <th>Price (£)</th>
+    </tr>
+    <tr>
+        <td><input type="checkbox" name="swimmingwithout" value="25"></td>
+        <td>Swimming pool (without gym membership)</td>
+        <td>25</td>
+    </tr>
+    <tr>
+        <td><input type="checkbox" name="classeswithout" value="20"></td>
+        <td>Classes (without gym membership) </td>
+        <td>20</td>
+    </tr>
+    <tr>
+        <td><input type="checkbox" name="massagewithout" value="30"></td>
+        <td>Massage therapy (without gym membership) </td>
+        <td>30</td>
+    </tr>
+    <tr>
+        <td><input type="checkbox" name="physiowithout" value="25"></td>
+        <td>Physiotherapy (without gym membership)</td>
+        <td>25</td>
+    </tr>
+</table>
+
+
+<h1 class="section-header">Combined Memberships:</h1>
+<table class="centered-table">
+    <tr>
+        <th>Select</th>
+        <th>Membership Type</th>
+        <th>Price (£)</th>
+    </tr>
+    <tr>
+        <td><input type="checkbox" name="swimmingwith" value="15"></td>
+        <td>Swimming pool (with gym membership)</td>
+        <td>+15 extra</td>
+    </tr>
+    <tr>
+        <td><input type="checkbox" name="classeswith" value="10"></td>
+        <td>Classes (with gym membership) </td>
+        <td>+10 extra</td>
+    </tr>
+    <tr>
+        <td><input type="checkbox" name="massagewith" value="25"></td>
+        <td>Massage therapy (with gym membership) </td>
+        <td>+25 extra</td>
+    </tr>
+    <tr>
+        <td><input type="checkbox" name="physiowith" value="20"></td>
+        <td>Physiotherapy (with gym membership)</td>
+        <td>+20 extra</td>
+    </tr>
+</table>
+<p>Total: <span id="total">&#163;10</span></p>
+</div>
+
+
+<div id="PowerzonePricing" style="display: none;"> <!--Hide initially-->
+    <h1 class="section-header">Mandatory Fees:</h1>
+<p><strong>Joining Fee:</strong> £30 (Applied to All memberships)</p>
+<h1 class="section-header">Gym Membership Options:</h1>
+
+<table class="centered-table">
+    <tr>
+        <th>Select</th>
+        <th>Membership Type</th>
+        <th>Price (£)</th>
+    </tr>
+    <tr>
+        <td><input type="radio" name="gymmembership" value="13"></td>
+        <td>Gym: Super-off peak (10 am - 12 pm & 2 pm - 4 pm)</td>
+        <td>13</td>
+    </tr>
+    <tr>
+        <td><input type="radio" name="gymmembership" value="19"></td>
+        <td>Gym: Off-peak (12 - 2 pm & 8 - 11 pm)</td>
+        <td>19</td>
+    </tr>
+    <tr>
+        <td><input type="radio" name="gymmembership" value="24"></td>
+        <td>Gym: Anytime </td>
+        <td>24</td>
+    </tr>
+</table>
+
+
+<h1 class="section-header">Non-Gym Membership Options</h1>
+<table class="centered-table">
+    <tr>
+        <th>Select</th>
+        <th>Membership Type</th>
+        <th>Price (£)</th>
+    </tr>
+    <tr>
+        <td><input type="checkbox" name="swimmingwithout" value="20"></td>
+        <td>Swimming pool (without gym membership)</td>
+        <td>20</td>
+    </tr>
+    <tr>
+        <td><input type="checkbox" name="classeswithout" value="20"></td>
+        <td>Classes (without gym membership) </td>
+        <td>20</td>
+    </tr>
+    <tr>
+        <td><input type="checkbox" name="massagewithout" value="30"></td>
+        <td>Massage therapy (without gym membership) </td>
+        <td>30</td>
+    </tr>
+    <tr>
+        <td><input type="checkbox" name="physiowithout" value="30"></td>
+        <td>Physiotherapy (without gym membership)</td>
+        <td>30</td>
+    </tr>
+</table>
+
+
+<h1 class="section-header">Combined Memberships:</h1>
+<table class="centered-table">
+    <tr>
+        <th>Select</th>
+        <th>Membership Type</th>
+        <th>Price (£)</th>
+    </tr>
+    <tr>
+        <td><input type="checkbox" name="swimmingwith" value="12.5"></td>
+        <td>Swimming pool (with gym membership)</td>
+        <td>+12.5 extra</td>
+    </tr>
+    <tr>
+        <td><input type="checkbox" name="classeswith" value="0"></td>
+        <td>Classes (with gym membership) </td>
+        <td>0</td>
+    </tr>
+    <tr>
+        <td><input type="checkbox" name="massagewith" value="25"></td>
+        <td>Massage therapy (with gym membership) </td>
+        <td>+25 extra</td>
+    </tr>
+    <tr>
+        <td><input type="checkbox" name="physiowith" value="25"></td>
+        <td>Physiotherapy (with gym membership)</td>
+        <td>+25 extra</td>
+    </tr>
+</table>
+<p>Total: <span id="total">&#163;30</span></p> <!--displays total-->
+</div>
+
+<script>
+    document.getElementById('buttonUgym').addEventListener('click',function(){ //checks if the button ugym is clicked and if so does the following function
+        document.getElementById('UgymPricing').style.display ='block'; //checks for the id UgymPricing which is the id of a div displaying the ugym prices, and changes its display to block which displays it
+        document.getElementById('PowerzonePricing').style.display='none';//changes display for powerzone to none, so doesnt display the prices for powerzone
+        calculateTotal(10, 'UgymPricing');//the startingprice for ugym is sent and the id'UgymPricing' is sent to know which button was clicked
+    });
+    document.getElementById('buttonPowerzone').addEventListener('click',function(){
+        document.getElementById('UgymPricing').style.display='none';
+        document.getElementById('PowerzonePricing').style.display ='block';
+        calculateTotal(30, 'PowerzonePricing');
+    });
+    function calculateTotal(startingprice, pricingId){
+        let form=document.getElementById(pricingId); //assigns "form" to the pricingId, it then finds that id which is in a div and takes the whole thing inside the div
+        let totalElement=form.querySelector('#total') //assigns totalElement to the element that has id="total" in the div that has id of pricingId
+        let total=startingprice; //initialises total as the startingprice
+
+
+        form.addEventListener('change', () =>{//"change" means when a change happens in the form the following "function"/code is runned
+            total=startingprice;//reset total to include mandatory fee
+            const selectedMembership= form.querySelector('input[name="gymmembership"]:checked');//selects button with the name and that is checked
+            if (selectedMembership){//if it is checked:
+                total+=parseInt(selectedMembership.value, 10)//this adds the selectedmembership price to the total
+                //parseint converts selectedMembership.value string to int , "10" specifies that the number is in base 10
+            }
+            form.querySelectorAll('input[type="checkbox"]:checked').forEach((checkbox)=>{//checks for all checked checkboxes and iterates over them with "forEach"
+                total+=parseFloat(checkbox.value);//for each checked checkbox its value is turned into a Float number and is added to the total
+            });
+            totalElement.textContent=`£${total.toFixed(2)}`//updates totalElement so that it displays the new total amount and adds a pound before it. `` these are backticks they are basically special strings in javascript used to allow multiline string and placeholding
+     //`${}` this converts anything inside the curly brackets into a string
+     //toFixed(2) is used to ensure 2 decimal places
+        })
+        
+    }
+    calculateTotal(10,'UgymPricing');//initalises the page to first display ugym prices and calculate
+   
+</script>
+
+</body>
+</html>

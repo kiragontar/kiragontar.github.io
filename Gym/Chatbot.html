@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chatbot</title>
+    <!-- Styling with CSS -->
+    <style>
+         /* Styling for the body */
+         *{
+  padding: 0;
+  margin:0;
+  text-decoration: none;
+  list-style: none;
+}
+
+body {
+  font-family: Facón;
+  background: #fff6e3
+}
+
+        /* Styling for the chat container */
+        .chat-container {
+            max-width: 400px;
+            margin: 50px auto;
+            background-color: #00382c;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: left;
+        }
+
+        /* Styling for the chat box */
+        .chat-box {
+            height: 300px;
+            overflow-y: auto;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #ffffff;
+            padding: 0;
+        }
+       /* Styling for each chat message */
+        .chat-box .message {
+            margin-bottom: 10px;
+        }
+       /* Styling for user messages */
+        .user-message {
+            color: #333;
+        }
+        /* Styling for bot messages */
+        .bot-message {
+            color: #000000;
+        }
+        /* Styling for user input */
+        .user-input {
+            width: calc(100% - 70px);
+            padding: 10px;
+            border: 1px solid #000000;
+            border-radius: 5px;
+            margin-right: 5px;
+            margin-top: 3%;
+        }
+        /* Styling for send button */
+        .send-btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #1cbe60;
+            color: #fff;
+            cursor: pointer;
+            margin-top: 2%;
+        }
+        /* Styling for heading */
+        h1 {
+            text-align: center;
+            color: #ffffff;
+        }
+       /* Styling for response */
+        #response {
+            color: #0b0c0c;
+            font-size: 25px;
+            text-align: center;
+            padding-top:30px;
+        }
+        
+        nav{
+  background: #000000;
+  height: 80%;
+  width:auto;
+}
+
+label.logo{
+  color: white;
+  font-size: 35px;
+  line-height: 80px;
+  padding: 0 100px;
+  /* font-height: bold; */
+
+}
+
+nav ul {
+  float: right;
+  margin-right: 20px;
+}
+
+nav ul li{
+  display: inline-block;
+  line-height: 80px;
+  margin: 0 5px;
+}
+
+nav ul li a{
+  color: white;
+  font-size: 17px;
+  border-radius:3px;
+  padding: 7px 13px;
+  text-transform: uppercase;
+}
+
+a.active, a:hover{
+  background: #a1a1a1;
+  transition: .5s;
+}
+    </style>
+      <!-- Using JavaScript for sending user message and receiving bot response -->
+    <script>
+   // 'sendMessage()' is a JavaScript function, it is used when the user clicks the send button.
+        function sendMessage() {
+             // 'document.getElementById('user_input')' : it retrieves the input with Id 'user_input'.
+            const userInput = document.getElementById('user_input').value;
+            // This line conist to construct 'data' string that will be directly sent to the server.
+            // 'encodeURIComponent' ensure that the userinput is correctly formatted and it is ready to transmit.
+            // The user input is stored in the 'userInput'.
+            const data = 'user_input=' + encodeURIComponent(userInput);
+           // 'fetch' function is used in that part to send the HTTP with POST method to this URL.
+            fetch('http://localhost/webprog/Gym/Chatbot.py', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: data
+            })
+            // 'then' verify the condition that if the POST method was successfully done, then the response will be converted into a text.
+            .then(response => response.text())
+            // Sets the inner HTML of the element with the id 'response' to the received text, then updates the chat box to display the response from the server.
+            .then(text => {
+                // 
+                document.getElementById('response').innerHTML = text;
+            })
+            // This is the error exception if any error was captured or been, it will appear the message error.
+            .catch(error => console.error('Error:', error));
+        }
+    </script>
+</head>
+<body>
+    <nav>
+        <!-------------------------- Navigation Bar ------------------------>
+        <label class="logo">GSO LAGO</label>
+        <ul>
+          <li><a href="mainpage.py"> Home   </a></li>
+          <li><a href="login.py"> Log In </a></li>
+        </ul>
+      </nav>
+    
+      <!--------------------------------------------------------------------->
+    <!-- The 'chat-container' is the box that contain the chat box itself, user input field, send button, and any other elements related to the chat functionality.-->
+    <div class="chat-container">
+        <!-- Header -->
+        <h1>ChatBot</h1>
+        <!-- Chat box for displaying messages -->
+        <div class="chat-box" id="response"></div>
+        <!-- User input field -->
+        <input type="text" placeholder="Type your message here..." id="user_input" class="user-input">
+         <!-- "Send" button to send user message, using JavaScript function to be executed when the button is clicked. In this case, it calls the "sendMessage()" function when the button is clicked. -->
+        <input type="button" value="Send" onclick="sendMessage();" class="send-btn">
+    </div>
+</body>
+</html>
