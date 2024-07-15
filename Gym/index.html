@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup Page</title>
+    
+    <style>
+        #passwordError{ /*Styling for error message*/
+            color: red;
+        }
+        .inputcontainer{ /*styles for the container of the input fields*/
+            display: flex;/*Displays container as a flexbox*/
+            flex-direction: column;/*Arranges element items in a column so that they are under each other*/
+            align-items: center; /*Arranges element items so that they are centered horizontally*/
+            justify-content: center; /*Arranges element items so that they are centered vertically*/
+        }
+        .inputbox{/*Styles for each input box*/
+            width: 400px; /*makes the width of the box 400px*/
+            border: 1px solid #ccc; /*Creates a solid border of 1px thickness with the color #ccc */
+            padding:10px; /*Creates 10px of space between border and the center*/
+            margin-bottom:10px; /*Creates 10px of space below the input box*/
+            border-radius: 5px; /*makes the border corners rounded*/
+        }
+        .labels{/*Styles for labels*/
+            margin-right: 330px; /*Adds 330px of space to the right of the element*/
+            margin-bottom: 10px; /*Adds 10px of space to the bottom of the element*/
+          
+        }
+        .title{/*Styles for the title*/
+            color: #333; /*makes the text the color #333*/
+            font-weight: bold; /*makes the text bold*/
+            text-align: center; /*centers the text*/
+            margin-bottom: 20px; /*Adds 20px of space to the bottom of the title */
+            margin-top: 40px; /*Adds 40px of space to the top of the title*/
+        }
+        .phone-container { /*Styles for the container of the phone*/
+            display: flex;/*Displays container as a flexbox*/
+            align-items: center; /*Arranges element iterms so that they are centered horizontally*/
+            margin-bottom: 10px; /*Adds 10px of space to the bottom of the phone container*/
+        }
+
+
+        .vertical-line {/*Styles for the vertical line*/
+            width: 1px; /*makes the line 1px in width*/
+            border-right: 1px solid #ccc; /*creates a solid border only on the right side with the thickness of 1px with the color #ccc*/
+            height: 30px; /*makes the line 30px in height*/
+            margin-bottom: 10px; /*Adds 10px of space to the bottom of the vertical line*/
+        }
+        .button{ /*Styles for the button*/
+            margin-left: 50px; /*Adds 50px of space to the left of the button*/
+            margin-top: 20px; /*Adds 20px of space to the top of the button*/
+            margin-bottom: 20px; /*Adds 20px of space to the bottom of the button*/
+            padding:20px; /*Creates 20px of space between the border and the center*/
+            border-radius: 7px; /*makes the border corners rounded*/
+            width:200px; /*makes the widht of the button box 200px*/
+            background:black ; /*gives the button a color background of black*/
+            color:white; /*Gives the text in the button the color white*/
+
+        }
+        .hyperlink{/*styles for the elements with id "hyperlink" this was done seperate than with other hyperlinks as different font family was wanted*/
+            text-decoration: none; /*Removes any decorations such as underlines on hyperlinks*/
+            font-family: Arial, Helvetica, sans-serif; /*Font family of the text*/
+        }
+        .hyperlink:hover{ /*Styles for when hovering the elements with the id "hyperlink"*/
+            color:black; /*Makes the hyperlink black when user hovers on it*/
+        }
+        a{ /*Styles for any hyperlink other than the ones with the id "hyperlink"*/
+            text-decoration: none; /*Removes any decorations such as underlines on hyperlinks*/
+        }
+        fieldset{ /*styles for fieldsets*/
+            border:none; /*Removes any default borders*/
+        }
+        fieldset legend{ /*styles for the legend element in fieldsets*/
+            font-weight: bold; /*makes the text bold*/
+            margin-bottom: 10px; /*Adds 10px of space to the bottom of the legend element*/
+        }
+        *{ /*styles for everything*/
+            padding: 0; /*resets padding*/
+            margin:0; /*resets margin*/
+            text-decoration: none; /*removes default text-decorations */
+            list-style: none; /*removes list styles in lists such as bullet points*/
+        }
+  
+        body {/*Styles for everything in the body*/
+            font-family: Facón; /*makes the font of the text*/
+            background: #ffffff /*gives the background of the body the color #ffffff*/
+        }
+  
+        nav{/*styles for everything in the <nav> tag*/
+            background: #000000; /*Makes the background of the elements in the nav tag #000000*/
+            height: 80%; /*Makes the height of the nav 80% of its containing elements */
+            width:auto; /*tells nav to automatically adjust the width based on the contents inside*/
+        }
+  
+        label.logo{ /*Style for labels with the class "logo"*/
+            color: white; /*Makes the text of the label white*/
+            font-size: 35px; /*Makes the text of the label 35px in font size*/
+            line-height: 80px; /*sets the height of each line of text  to 80px*/
+            padding: 0 100px; /*creates padding of 0px to top and bottom and 100px to left and right*/
+        }
+  
+        nav ul { /*Refers to the <ul> tags in the <nav> tags*/
+            float: right; /*moves elements to right side of container so moves the ul to the right*/
+            margin-right: 20px; /*Adds 20px of space to the right of the ul */
+        }
+  
+        nav ul li{ /*Styles to the <li> tags inside <ul> tags that is inside the <nav> tag*/
+            display: inline-block; /*Displays container as inline-block so element items are horizontally aligned with the same properties like height, etc.*/
+            line-height: 80px; /*Sets the height of each line of text to 80px*/
+            margin: 0 5px; /*Adds 0px of space to top and bottom and 5px to the left and right of the element*/
+        }
+  
+        nav ul li a{ /*Refers to the li situation in the top one but if the li contains an <a> tag so this applies to hyperlinks in the li*/
+            color: white; /*makes the hyperlink white*/
+            font-size: 17px; /*makes the hyperlink 17px in font size*/
+            border-radius:3px; /*Makes border corners of hyperlink rounded*/
+            padding: 7px 13px; /*Creates padding of 7px to top and bottom and 13px to left and right sides of the hyperlinks*/
+            text-transform: uppercase; /*Transforms the hyperlink into uppercase*/
+        }
+  
+        a.active, a:hover{ /*Styles for hyperlink for when they are active meaning as soon as user clicks on it, and when they hover over the hyperlink*/
+            background: #a1a1a1; /*makes the background #a1a1a1*/
+            transition: .5s; /*makes the background change happen after 0.5seconds*/
+        }
+        #loadingspinner{ /*Styles for element with id "loadingspinner"*/
+            position: fixed; /*keeps the position fixed on the screen so even if user scrolls up it still remains in the same position on the screen, so it goes up with the user*/
+            top: 50%;  /*Centers element on the screen vertically*/
+            left: 50%; /*Centers element on the screen horizontally*/
+            /*Top and left 50% ensure that the top left of the loadingspinner is centered at the middle of the viewport initially*/
+            display: none; /*Initially hides the element until adjusted later*/
+            transform: translate(-50%, -50%); /*This centers the loadingspinner in the middle after it has its top left corner has been centered*/
+            z-index: 1000; /* Ensure it's above other content */
+        }
+
+    </style>
+
+
+</head>
+<script src="https://www.google.com/recaptcha/api.js" async defer></script> <!--Scripts from google recaptcha-->
+<!--async makes it so that the html page keeps loading while it gets the recaptcha working-->
+<!--defer makes it so that the rest of the html page loads and then it loads this script-->
+
+
+
+<body>
+    <nav>
+        <!-------------------------- Navigation Bar ------------------------>
+        <label class="logo">GSO LAGO</label>
+        <ul>
+          <li><a href="mainpage.py">Home</a></li>
+          <li><a href="login.py"> Log in </a></li>
+          <li><a href="Chatbot.html">Chatbot</a></li>
+        </ul>
+    </nav>
+      <!--------------------------------------------------------------------->
+
+    <h1 class="title">Signup</h1> <!--Makes the heading bold and colored-->
+    <form action="index.py" method="post" id="registrationForm" enctype="multipart/form-data"> <!--links the form to the python script and makes it a post method-->
+    <!--Has an id of registrationForm needed for javascript and enctype allows files to be uploaded to the server -->
+    <div class="inputcontainer">
+    <label for="FirstName" class="labels">First Name *</label>
+    <input type="text" name="FirstName" class="inputbox" pattern="[A-Za-z]+" placeholder="First Name" title="First Name" required > <!--Allows user to type input-->
+    <!--A specific pattern is made so that they can only input the Alphabet and placeholder gives them a type of hint on what to expect-->
+    <br>
+    <label for="LastName" class="labels">Last Name *</label>
+    <input type="text" name="LastName" class="inputbox" pattern="[A-Za-z]+" placeholder="Last Name" title="Last Name" required><!--required makes it so that user needs to input something-->
+    <br>
+    <label for="email" style="margin-right: 310px; margin-bottom: 10px;">Email Address *</label>
+    <input type="text" name="email" class="inputbox" required pattern="[^@\s]+@[^@\s]+\.[^@\s]+" placeholder="Email" title="Enter a valid email address">
+    <!--required makes the email required and pattern makes it so that they can enter any length of characters that is not a @ or a whitespace,-->
+    <!--It then requires "@" to be after that then a "." to be there then any length of characters again-->
+    <br>
+    <label for="Password" style="margin-right: 345px; margin-bottom: 10px;">Password *</label>
+    <input type="password" name="Password" class="inputbox"  id="password" placeholder="Password"  title="Password" required><!--the input type is set to password making it in a format of a password, hiding the input-->
+    <br>
+    <label for="Confirm Password" style="margin-right: 290px; margin-bottom: 10px;">Confirm Password *</label>
+    <input type="password" name="Confirm Password" class="inputbox" id="confirmPassword" placeholder="Confirm Password" title="Confirm Password" required>
+    <span id="passwordError"></span> <!--Span is used to apply styles to specific section of text , it is given an id -->
+
+    <br>
+    <label for="DOB" style="margin-right: 320px; margin-bottom: 10px;">Date of Birth *</label>
+    <input type="date" name="DOB" class="inputbox" title="Date of Birth" required> <!--allows user to select date with date picker as type is date-->
+    <br>
+    <label for="Phone" style="margin-right: 310px; margin-bottom: 10px;">Phone Number *</label>
+    <div class="phone-container">
+    <select name="country_code" style="width: 80px; padding: 8px; border-radius: 5px; margin-bottom: 10px; margin-left: 80px;outline: none;"><!--Allows user to select from one of the options-->
+        <option value="+1">United States(+1)</option> <!--Allows user to choose any of the options optionally-->
+        <option value="+44">United Kingdom(+44)</option>
+        <option value="+33">France(+33)</option>
+        <option value="+49">Germany(+49)</option>
+        <option value="+91">India(+91)</option>
+        <option value="+86">China(+86)</option>
+        <option value="+55">Brazil(+55)</option>
+        <option value="+30">Greece(+30)</option>
+        <option value="+39">Italy(+39)</option>
+        <option value="+20">Egypt(+20)</option>
+    </select>
+    <span class="vertical-line"></span> <!--Adds the vertical line which is styled in the css-->
+    <br> 
+    <input type="tel" name="Phone" style="width: 320px;border: 1px solid #ccc;padding:10px;margin-bottom:10px;border-radius: 5px; margin-right: 80px;" pattern="[0-9]{9,12}" placeholder="Between 9 to 12 digits" required>
+    <!--type="tel" specifies that its a phone number-->
+    <!--The pattern makes it so that user can only type numbers from 0-9 and not characters-->
+    <!--The pattern also specifies that the amount of numbers should be between 9 to 12-->
+    <!--placeholder gives the user a kind of hint to tell them how format should be-->
+    </div>
+    <br>
+    <fieldset style="width: 200px; margin-right: 200px; margin-bottom: 20px;"> <!--FieldSets are used to group related elements together-->
+    <legend>Are you a Student?</legend> <!--Legend Acts as a title, it is used in fieldsets-->
+    <label for="Student" style="font-weight: bold;">Yes</label> 
+    <input type="radio" name="Student" value="yes" onclick="showFileInput()"> <!--Makes it so that the function is displayed once clicked on-->
+    <label for="Student" style="font-weight: bold;">No</label>
+    <input type="radio" name="Student" value="no" onclick="hideFileInput()" checked><!--pre checks the No button-->
+    </fieldset>
+    <fieldset id="fileUploadSection" hidden> <!--Hides the fileUploadSection, fieldset is used to group related form elements together-->
+        <legend style="font-weight: bold;">Student ID photo Upload: </legend><!--provides title or caption for the fieldset-->
+        <label for="studentID"style="font-weight:bold">Upload Student ID photo:</label>
+        <input type="file" name="studentID" accept="image/jpeg, image/png, image/jpg"> <!--The type is file so that it allows user to browse and input a file-->
+    </fieldset> <!--The file would only accept image of png and jpeg and jpg as specified-->
+
+    <div class="g-recaptcha" style="margin-right: 120px; margin-top: 20px;" data-sitekey="6LdEJ0kpAAAAAKB8MYc237UGzyRazkSdas40zGRX" data-callback="onRecaptchaSuccess"></div> <!--Key from google recaptcha responsible for making recaptcha appear-->
+    <!--The Class is already pre defined by google when the script on the top about google recatpcha is called.-->
+    <!--The data-callback is pre defined by google which allows user to specify a JavaScript Function to run when user completes the reCAPTCHA challenge, in this case it calls "onRecaptchaSuccess"-->
+    <br>
+    <p style="margin-right: 260px;">Have an account? <a href="Login.py" class="hyperlink">Log in</a></p><!--Links to log in page-->
+    <input type="hidden" id="best_price" name="best_price" value=""> <!--This is hidden from the user, this is used to carry the price from the form page to here and to the payment page-->
+    <!--Value is left empty as it is supposed to be populated by javascript-->
+    <script>document.getElementById('best_price').value=localStorage.getItem('best_price');</script> <!--This searches for the element with id="best_price which is the input above this." -->
+    <!--It then sets the elements value to the value saved in the localstorage with the item called"best_price" from the filter.py script -->
+    <div id="loadingspinner" style="display: none;"> <!--This div holds an id which is initially hidden-->
+    <img src="pictures/spinning.gif" alt="loading"> <!--The div contains an image with the alternative specified to "loading" if picture doesnt load-->
+    </div>
+    <input type="submit" value="CREATE ACCOUNT" class="button"> <!--Submit button to send the form inputs to the server-->
+    </div>
+    </form>
+
+    <script> //javascript
+        var isRecaptchaValid=false;  //variable called isRecaptchaValid is initially set to false
+        function onRecaptchaSuccess(){ //function created to be called when recaptcha procedure is successful
+            isRecaptchaValid=true; //once the function is ran then it sets the variable to true, this value is checked later below to check if an alert should be raised or not
+        }
+
+
+
+        function showFileInput(){ //function to show the user the file upload section to the user
+            document.getElementById('fileUploadSection').hidden=false; //searches the form element by the id of fileuploadsection 
+            //unhides it by setting the hidden to false once the function is called
+            document.querySelector('input[name="studentID"]').setAttribute('required', 'required')//selects element that has the input name="studentID"
+            //sets its attribute to make it required so when the function is called the user must upload a file
+            //selects the element with input name="studentID" and sets its attribute "required" to "required" to make it mandatory for form submission
+        }
+        function hideFileInput(){  
+            document.getElementById('fileUploadSection').hidden=true; //function that hides the fileuploadsection section unless showfileinput function is called
+            document.querySelector('input[name="studentID"]').removeAttribute('required')//removes the attribute "required" removing the need to submit a file when they press no to student
+        }
+        document.getElementById("registrationForm").addEventListener("submit", function(event) {//searches for the id=registrationform which is in the <form> tag
+            //adds an event listener and attaches it to the submit button so when user clicks submit it calls the function with event as its parameter to allow us to use properties of event such as event.preventDefault()
+            //the event in the parameter is the type of event that occured.
+            var isValidForm=true; //variable called isValidForm is initially set to true.
+            var password = document.getElementById("password").value; //searches for the value input of id password and assigns it to the value of password
+            var confirmPassword = document.getElementById("confirmPassword").value;//searches for the value input of id Confirmpassword and assigns it to the value of confirmpassword
+            var passwordError = document.getElementById("passwordError");//searches for the value input of id passworderror and assigns it to the value of Passworderror
+            
+            passwordError.textContent="";//initially makes textcontent of passwordError empty as no error happened yet
+
+            if (password.length<4) { //checks if the input password is less than 4 characters or not
+                passwordError.textContent = "Password must be at least 4 characters long"; //sets the textcontent of the passwordError
+                isValidForm=false; //sets isValidForm to false indicating that there is an error and it isnt a validForm
+            }
+            if (password !== confirmPassword) { //checks if password and confirmpassword do not match
+                passwordError.textContent = "Passwords do not match";//sets the textcontent of the passwordError
+                isValidForm=false;//sets isValidForm to false indicating that there is an error and it isnt a validForm
+            }
+            if (!isRecaptchaValid){ //checks if reCaptcha is not valid and it failed
+                alert("Please verify that you are not a robot."); //makes an alert displaying the message
+                isValidForm=false;//sets isValidForm to false indicating that it isnt a validForm as recaptcha failed
+            }
+            if (!isValidForm){ //checks if form is not valid and stops form submission if so.
+                event.preventDefault(); // Prevents form submission 
+            }
+            else{//if form is valid then:
+                document.getElementById('loadingspinner').style.display='block'; //searches the form element by the id of fileuploadsection  and sets its style display to block which makes it visible. 
+                //making it display to block makes it so that it takes up the full width available to it and start on a new line
+                document.getElementById('registrationForm').style.pointerEvents='none';//this makes everything in the form unresponsive to mouse clicks, hover effects and any other pointer-related events.
+                document.getElementById('registrationForm').style.opacity='0.5'; //makes the opacity of the form less 
+                document.querySelector('input[type="submit"]').disabled = true; //just to ensure that no unexpected bug occurs this still works, this disable the submit button from working further
+
+            }
+            
+        });
+       
+
+
+        
+        
+
+        
+
+
+
+
+
+
+
+
+    
+        
+
+
+
+    </script>
+
+
+
+
+    </body>
+    </html>
